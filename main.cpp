@@ -22,7 +22,6 @@ Vector2 BALL1_BASE_SIZE = {30.0f, 30.0f},
         BALL2_BASE_SIZE = {30.0f, 30.0f},
         BALL3_BASE_SIZE = {30.0f, 30.0f};
 
-// @see https://idol.st/idols/ for source
 constexpr char BACKGROUND_FP[] = "Assets/background.png";
 constexpr char PADDLE1_FP[] = "Assets/bluedragon.png";
 constexpr char PADDLE2_FP[] = "Assets/reddragon.png";
@@ -261,7 +260,9 @@ void processInput() {
 }
 
 void update() {
-    float deltaTime = GetFrameTime();
+    float ticks =(float)  GetTime();
+    float deltaTime =ticks - gPreviousTicks;
+    gPreviousTicks = ticks;
     // Update paddle1 position with speed and boundary checking
     paddle1_position.y += paddle1_movement.y * SPEED * deltaTime;
     
